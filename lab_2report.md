@@ -116,7 +116,7 @@ https://t.me/itmoftmi_aes_bot
 ## Тестирование
 
 ### Видео демо
-https://drive.google.com/file/d/1i-GSwgG8kw5i0-XfMQNXXl67hbZLv3-G/view?usp=sharing
+[https://drive.google.com/file/d/1i-GSwgG8kw5i0-XfMQNXXl67hbZLv3-G/view?usp=sharing](https://drive.google.com/file/d/15nXB0CDS47cygZI6r9IuB9Nifk4DXAX6/view?usp=drive_link)
 
 ## Трудности и решения
 
