@@ -74,8 +74,8 @@ https://t.me/itmoftmi_aes_bot
 - `json` — минималистичное и понятное хранение для учебного/небольшого проекта.
 - `logging` — стандартный способ наблюдать поведение бота и быстро диагностировать ошибки.
 
-### Видео-демо (ссылка на YouTube/Google Drive)
-https://drive.google.com/file/d/15nXB0CDS47cygZI6r9IuB9Nifk4DXAX6/view?usp=sharing
+### Видео-демо (ссылка на Google Drive)
+[https://drive.google.com/file/d/15nXB0CDS47cygZI6r9IuB9Nifk4DXAX6/view?usp=sharing](https://drive.google.com/file/d/1i-GSwgG8kw5i0-XfMQNXXl67hbZLv3-G/view?usp=drive_link)
 
 ## Трудности и решения
 
