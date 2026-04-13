@@ -736,6 +736,7 @@ def main() -> None:
     # Railway mode: запускаем webhook-сервер на порту из окружения.
     port = int(os.getenv("PORT", "8080"))
     webhook_url = os.getenv("WEBHOOK_URL")
+    on_railway = bool(os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("RAILWAY_PUBLIC_DOMAIN"))
     if not webhook_url:
         railway_domain = os.getenv("RAILWAY_PUBLIC_DOMAIN")
         if railway_domain:
@@ -749,6 +750,11 @@ def main() -> None:
             url_path="webhook",
             webhook_url=webhook_url,
             drop_pending_updates=True,
+        )
+    elif on_railway:
+        raise ValueError(
+            "Для запуска на Railway нужен WEBHOOK_URL "
+            "(или RAILWAY_PUBLIC_DOMAIN для автоформирования URL)."
         )
     else:
         logger.info("WEBHOOK_URL не задан, запускаем polling-режим.")
