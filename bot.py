@@ -620,9 +620,11 @@ async def error_handler(update: object, context: CallbackContext) -> None:
 
 def main() -> None:
     """Точка входа."""
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    token = os.getenv("TELEGRAM_BOT_TOKEN") or os.getenv("BOT_TOKEN")
     if not token:
-        raise ValueError("Переменная TELEGRAM_BOT_TOKEN не найдена в окружении.")
+        raise ValueError(
+            "Переменная TELEGRAM_BOT_TOKEN (или BOT_TOKEN) не найдена в окружении."
+        )
 
     # Увеличиваем таймауты для нестабильной сети.
     app = (
@@ -731,8 +733,26 @@ def main() -> None:
 
     app.add_error_handler(error_handler)
 
-    logger.info("Бот запущен...")
-    app.run_polling()
+    # Railway mode: запускаем webhook-сервер на порту из окружения.
+    port = int(os.getenv("PORT", "8080"))
+    webhook_url = os.getenv("WEBHOOK_URL")
+    if not webhook_url:
+        railway_domain = os.getenv("RAILWAY_PUBLIC_DOMAIN")
+        if railway_domain:
+            webhook_url = f"https://{railway_domain}/webhook"
+
+    if webhook_url:
+        logger.info("Бот запущен в webhook-режиме: %s", webhook_url)
+        app.run_webhook(
+            listen="0.0.0.0",
+            port=port,
+            url_path="webhook",
+            webhook_url=webhook_url,
+            drop_pending_updates=True,
+        )
+    else:
+        logger.info("WEBHOOK_URL не задан, запускаем polling-режим.")
+        app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
