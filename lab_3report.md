@@ -56,6 +56,7 @@ https://t.me/itmoftmi_aes_bot
 6. Настройка Telegram webhook:
    - Выполнен запрос `setWebhook` на URL Railway.
    - Получен успешный ответ `Webhook was set`.
+<img width="1135" height="746" alt="Lab3_railway" src="https://github.com/user-attachments/assets/73b54b39-a0a9-4994-8862-5e089845a1bb" />
 
 ### С какими проблемами столкнулись
 
